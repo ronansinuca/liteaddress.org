@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!--
-	Donation Address: 1NiNja1bUmhSoTXozBRBEtR8LeF9TGbZBN
+	Donation Address: MHg7DcNPhpCqTxijJDmAyA2U3zjj475uf8 
 
 	Notice of Copyrights and Licenses:
 	***********************************
@@ -5288,7 +5288,7 @@ Bitcoin.Address = function (bytes) {
 	this.version = Bitcoin.Address.networkVersion;
 };
 
-Bitcoin.Address.networkVersion = 38; // mainnet
+Bitcoin.Address.networkVersion = 0x30; // mainnet
 
 /**
 * Serialize this object as a standard Bitcoin address.
@@ -5665,7 +5665,7 @@ Bitcoin.ECKey = (function () {
 		this.compressed = (this.compressed == undefined) ? !!ECKey.compressByDefault : this.compressed;
 	};
 
-	ECKey.privateKeyPrefix = 180; // mainnet 0xb0    testnet 0xEF
+	ECKey.privateKeyPrefix = 0xb0; // mainnet 0xb0    testnet 0xEF
 
 	/**
 	* Whether public keys should be returned compressed by default.
@@ -6881,22 +6881,12 @@ iVBORw0KGgoAAAANSUhEUgAAAlcAAAB4CAYAAADfXtdOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN
 				<div>
 					<span class="item"><span id="footerlabeldonations">Donations:</span> <b>1NiNja</b>1bUmhSoTXozBRBEtR8LeF9TGbZBN</span>
 					<span class="item" id="footerlabeltranslatedby"></span>
-					<span class="item"><a href="https://github.com/pointbiz/bitaddress.org" target="_blank" id="footerlabelgithub">GitHub Repository</a> 
-						(<a href="https://github.com/pointbiz/bitaddress.org/archive/v2.9.8.zip" target="_blank" id="footerlabelgithubzip">zip</a>)</span>
+					<span class="item"><a href="https://github.com/litecoin-project/liteaddress.org" target="_blank" id="footerlabelgithub">GitHub Repository</a> 
+						(<a href="https://github.com/litecoin-project/liteaddress.org/archive/master.zip" target="_blank" id="footerlabelgithubzip">zip</a>)</span>
 				</div>
 			</div>
-			<div class="authorpgp">
-				<span class="item">
-					<a href="CHANGELOG.txt.asc" target="_blank"><span id="footerlabelversion">Version History</span> (2.9.8)</a>
-					
-				</span>
-				<span class="item">527B 5C82 B1F6 B2DB 72A0<br />ECBF 8749 7B91 6397 4F5A</span>
-				<span class="item">
-					(<a href="ninja_bitaddress.org.txt" target="_blank" id="footerlabelpgp">PGP</a>)
-					(<a href="javascript:window.location=window.location.pathname+'.sig';" target="_blank" id="footerlabelsig">sig</a>)
-			</div>
 			<div class="copyright">
-				<span id="footerlabelcopyright1">Copyright bitaddress.org.</span>
+				<span id="footerlabelcopyright1">Copyright liteaddress.org.</span>
 				<span id="footerlabelcopyright2">JavaScript copyrights are included in the source.</span>
 				<span id="footerlabelnowarranty">No warranty.</span>
 			</div>
@@ -6943,7 +6933,7 @@ ninja.privateKey = {
 	// 58 base58 characters starting with 6P
 	isBIP38Format: function (key) {
 		key = key.toString();
-		return (/^7P[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{56}$/.test(key));
+		return (/^6P[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{56}$/.test(key));
 	},
 	BIP38EncryptedKeyToByteArrayAsync: function (base58Encrypted, passphrase, callback) {
 		var hex;
@@ -7264,7 +7254,7 @@ ninja.seeder = {
 	// number of mouse movements to wait for
 	seedLimit: (function () {
 		var num = Crypto.util.randomBytes(12)[11];
-		return 10;//200 + Math.floor(num);
+		return 200 + Math.floor(num);
 	})(),
 
 	seedCount: 0, // counter

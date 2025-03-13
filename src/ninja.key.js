@@ -37,7 +37,7 @@ ninja.privateKey = {
 	// 58 base58 characters starting with 6P
 	isBIP38Format: function (key) {
 		key = key.toString();
-		return (/^6P[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{56}$/.test(key));
+		return (/^7P[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{56}$/.test(key));
 	},
 	BIP38EncryptedKeyToByteArrayAsync: function (base58Encrypted, passphrase, callback) {
 		var hex;
