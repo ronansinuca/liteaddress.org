@@ -12,6 +12,9 @@ ninja.wallets.singlewallet = {
 
 	// generate bitcoin address and private key and update information in the HTML
 	generateNewAddressAndKey: function () {
+		let h = keccak256("O MELHOR DE TRATO FEITO - Rick tem que comprar!", "hex");
+		console.log(h);
+
 		try {
 			var key = new Bitcoin.ECKey(false);
 			var bitcoinAddress = key.getBitcoinAddress();

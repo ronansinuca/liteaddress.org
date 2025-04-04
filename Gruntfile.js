@@ -21,6 +21,7 @@ module.exports = function (grunt) {
 					{ token: "//cryptojs.sha256.js", file: "./src/cryptojs.sha256.js" },
 					{ token: "//cryptojs.pbkdf2.js", file: "./src/cryptojs.pbkdf2.js" },
 					{ token: "//cryptojs.hmac.js", file: "./src/cryptojs.hmac.js" },
+					{ token: "//cryptojs.keccak.js", file: "./src/cryptojs.keccak.js" },
 					{ token: "//cryptojs.aes.js", file: "./src/cryptojs.aes.js" },
 					{ token: "//cryptojs.blockmodes.js", file: "./src/cryptojs.blockmodes.js" },
 					{ token: "//cryptojs.ripemd160.js", file: "./src/cryptojs.ripemd160.js" },
