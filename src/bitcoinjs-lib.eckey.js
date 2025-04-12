@@ -42,9 +42,11 @@ Bitcoin.ECKey = (function () {
 
 		this.compressed = (this.compressed == undefined) ? !!ECKey.compressByDefault : this.compressed;
 	};
+	ECKey.MAIN_NET = 0xb4; // 7
+	ECKey.TEST_NET = 0xef;
 
-	ECKey.privateKeyPrefix = 0xb0; // mainnet 0xb0    testnet 0xEF
-
+	ECKey.privateKeyPrefix = ECKey.MAIN_NET; //180; // mainnet 0xb4    testnet 0xEF - private key starts with 7
+	// ECKey.privateKeyPrefix = 176; // private key starts with 6
 	/**
 	* Whether public keys should be returned compressed by default.
 	*/
@@ -230,15 +232,15 @@ Bitcoin.ECKey = (function () {
 	// 51 characters base58, always starts with a '5'
 	ECKey.isWalletImportFormat = function (key) {
 		key = key.toString();
-		return (ECKey.privateKeyPrefix == 0xb0) ?
-							(/^6[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{50}$/.test(key)) :
+		return (ECKey.privateKeyPrefix == ECKey.MAIN_NET) ?
+							(/^7[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{50}$/.test(key)) :
 							(/^9[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{50}$/.test(key));
 	};
 
 	// 52 characters base58
 	ECKey.isCompressedWalletImportFormat = function (key) {
 		key = key.toString();
-		return (ECKey.privateKeyPrefix == 0xb0) ?
+		return (ECKey.privateKeyPrefix == ECKey.MAIN_NET) ?
 							(/^T[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{51}$/.test(key)) :
 							(/^c[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{51}$/.test(key));
 	};

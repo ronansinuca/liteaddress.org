@@ -16,6 +16,7 @@ ninja.wallets.singlewallet = {
 			var key = new Bitcoin.ECKey(false);
 			var bitcoinAddress = key.getBitcoinAddress();
 			var privateKeyWif = key.getBitcoinWalletImportFormat();
+
 			document.getElementById("btcaddress").innerHTML = bitcoinAddress;
 			document.getElementById("btcprivwif").innerHTML = privateKeyWif;
 			var keyValuePair = {

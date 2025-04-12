@@ -7,7 +7,7 @@ module.exports = function (grunt) {
 		combine: {
 			single: {
 				input: "./src/bitaddress-ui.html",
-				output: "./liteaddress.org.html",
+				output: "./index.html",
 				tokens: [
 					{ token: "//array.map.js", file: "./src/array.map.js" },
 					{ token: "//biginteger.js", file: "./src/biginteger.js" },
@@ -36,7 +36,6 @@ module.exports = function (grunt) {
 					{ token: "//ninja.paperwallet.js", file: "./src/ninja.paperwallet.js" },
 					{ token: "//ninja.bulkwallet.js", file: "./src/ninja.bulkwallet.js" },
 					{ token: "//ninja.brainwallet.js", file: "./src/ninja.brainwallet.js" },
-					{ token: "//ninja.vanitywallet.js", file: "./src/ninja.vanitywallet.js" },
 					{ token: "//ninja.splitwallet.js", file: "./src/ninja.splitwallet.js" },
 					{ token: "//ninja.detailwallet.js", file: "./src/ninja.detailwallet.js" },
 					{ token: "//qrcode.js", file: "./src/qrcode.js" },
@@ -53,7 +52,7 @@ module.exports = function (grunt) {
 					eol: 'lf'
 				},
 				files: {                // Files to process
-					'./liteaddress.org.html': ['./liteaddress.org.html']
+					'./index.html': ['./index.html']
 				}
 			}
 		}

@@ -140,7 +140,6 @@ iVBORw0KGgoAAAANSUhEUgAAAlcAAAB4CAYAAADfXtdOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN
 			<li class="tab" id="paperwallet" onclick="ninja.tabSwitch(this);">Paper Wallet
 			<li class="tab" id="bulkwallet" onclick="ninja.tabSwitch(this);">Bulk Wallet
 			<li class="tab" id="brainwallet" onclick="ninja.tabSwitch(this);">Brain Wallet
-			<li class="tab" id="vanitywallet" onclick="ninja.tabSwitch(this);">Vanity Wallet
 			<li class="tab" id="splitwallet" onclick="ninja.tabSwitch(this);">Split Wallet
 			<li class="tab" id="detailwallet" onclick="ninja.tabSwitch(this);">Wallet Details
 		</ul>
@@ -283,66 +282,6 @@ iVBORw0KGgoAAAANSUhEUgAAAlcAAAB4CAYAAADfXtdOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN
 				</div>
 			</div>
 			
-			<div id="vanityarea" class="walletarea">
-				<div id="vanitystep1label" class="commands expandable" onclick="ninja.wallets.vanitywallet.openCloseStep(1);">
-					<span><label id="vanitylabelstep1">Step 1 - Generate your "Step1 Key Pair"</label> <input type="button" id="vanitynewkeypair" 
-						value="Generate" onclick="ninja.wallets.vanitywallet.generateKeyPair();" /></span>
-					<div id="vanitystep1icon" class="more"></div>
-				</div>
-				<div id="vanitystep1area">
-					<div>
-						<span class="label" id="vanitylabelstep1publickey">Step 1 Public Key:</span>
-						<div class="output pubkeyhex" id="vanitypubkey"></div>
-						<br /><div class="notes" id="vanitylabelstep1pubnotes">Copy and paste the above into the Your-Part-Public-Key field in the Vanity Pool Website.</div>
-					</div>
-					<div>
-						<span class="label" id="vanitylabelstep1privatekey">Step 1 Private Key:</span>
-						<span class="output" id="vanityprivatekey"></span>
-						<br /><div class="notes" id="vanitylabelstep1privnotes">Copy and paste the above Private Key field into a text file. Ideally save to an encrypted drive. You will need this to retrieve the Litecoin Private Key once the Pool has found your prefix.</div>
-					</div>
-				</div>
-				<div id="vanitystep2label" class="expandable" onclick="ninja.wallets.vanitywallet.openCloseStep(2);">
-					<span id="vanitylabelstep2calculateyourvanitywallet">Step 2 - Calculate your Vanity Wallet</span>
-					<div id="vanitystep2icon" class="more"></div>
-				</div>
-				<div id="vanitystep2inputs">
-					<div>
-						<span id="vanitylabelenteryourpart">Enter Your Part Private Key (generated in Step 1 above and previously saved):</span>
-						<br /><span class="notes" id="vanitylabelnote1">[NOTE: this input box can accept a public key or private key]</span>
-					</div>
-					<div><textarea id="vanityinput1" rows="2" cols="90" onfocus="this.select();"></textarea></div>
-					<div>
-						<span id="vanitylabelenteryourpoolpart">Enter Pool Part Private Key (from Vanity Pool):</span>
-						<br /><span class="notes" id="vanitylabelnote2">[NOTE: this input box can accept a public key or private key]</span>
-					</div>
-					<div><textarea id="vanityinput2" rows="2" cols="90" onfocus="this.select();"></textarea></div>
-					<div>
-						<label for="vanityradioadd" id="vanitylabelradioadd">Add</label> <input type="radio" id="vanityradioadd" name="vanityradio" value="add" checked />
-						<label for="vanityradiomultiply" id="vanitylabelradiomultiply">Multiply</label> <input type="radio" id="vanityradiomultiply" name="vanityradio" value="multiply" />
-					</div>
-					<div><input type="button" id="vanitycalc" value="Calculate Vanity Wallet" onclick="ninja.wallets.vanitywallet.addKeys();" /></div>
-				</div>
-				<div id="vanitystep2area">
-					<div>
-						<span class="label" id="vanitylabelbitcoinaddress">Vanity Litecoin Address:</span>
-						<span class="output" id="vanityaddress"></span>
-						<br /><div class="notes" id="vanitylabelnotesbitcoinaddress">The above is your new address that should include your required prefix.</div>
-					</div>
-					
-					<div>
-						<span class="label" id="vanitylabelpublickeyhex">Vanity Public Key (HEX):</span>
-						<span class="output pubkeyhex" id="vanitypublickeyhex"></span>
-						<br /><div class="notes" id="vanitylabelnotespublickeyhex">The above is the Public Key in hexadecimal format. </div>
-					</div>
-
-					<div>
-						<span class="label" id="vanitylabelprivatekey">Vanity Private Key (WIF):</span>
-						<span class="output" id="vanityprivatekeywif"></span>
-						<br /><div class="notes" id="vanitylabelnotesprivatekey">The above is the Private Key to load into your wallet. </div>
-					</div>
-				</div>
-			</div>
-
 			<div id="splitarea" class="walletarea">
 				<div id="splitcommands" class="commands " >
 					<label id="splitlabelthreshold">Minimum share threshold needed to combine</label>
@@ -458,7 +397,6 @@ iVBORw0KGgoAAAANSUhEUgAAAlcAAAB4CAYAAADfXtdOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN
 			</div>
 		</div>
 
-
 		<div id="footer" class="footer">
 			<div class="authorbtc">
 				<div>
@@ -506,9 +444,6 @@ iVBORw0KGgoAAAANSUhEUgAAAlcAAAB4CAYAAADfXtdOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN
 	</script>
 	<script type="text/javascript">
 //ninja.brainwallet.js
-	</script>
-	<script type="text/javascript">
-//ninja.vanitywallet.js
 	</script>
 	<script type="text/javascript">
 //ninja.detailwallet.js

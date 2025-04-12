@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!--
-	Donation Address: MHg7DcNPhpCqTxijJDmAyA2U3zjj475uf8 
+	Donation Address: 1NiNja1bUmhSoTXozBRBEtR8LeF9TGbZBN
 
 	Notice of Copyrights and Licenses:
 	***********************************
@@ -5288,7 +5288,7 @@ Bitcoin.Address = function (bytes) {
 	this.version = Bitcoin.Address.networkVersion;
 };
 
-Bitcoin.Address.networkVersion = 0x30; // mainnet
+Bitcoin.Address.networkVersion = 38; // mainnet
 
 /**
 * Serialize this object as a standard Bitcoin address.
@@ -5664,9 +5664,11 @@ Bitcoin.ECKey = (function () {
 
 		this.compressed = (this.compressed == undefined) ? !!ECKey.compressByDefault : this.compressed;
 	};
+	ECKey.MAIN_NET = 0xb4; // 7
+	ECKey.TEST_NET = 0xef;
 
-	ECKey.privateKeyPrefix = 0xb0; // mainnet 0xb0    testnet 0xEF
-
+	ECKey.privateKeyPrefix = ECKey.MAIN_NET; //180; // mainnet 0xb4    testnet 0xEF - private key starts with 7
+	// ECKey.privateKeyPrefix = 176; // private key starts with 6
 	/**
 	* Whether public keys should be returned compressed by default.
 	*/
@@ -5852,15 +5854,15 @@ Bitcoin.ECKey = (function () {
 	// 51 characters base58, always starts with a '5'
 	ECKey.isWalletImportFormat = function (key) {
 		key = key.toString();
-		return (ECKey.privateKeyPrefix == 0xb0) ?
-							(/^6[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{50}$/.test(key)) :
+		return (ECKey.privateKeyPrefix == ECKey.MAIN_NET) ?
+							(/^7[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{50}$/.test(key)) :
 							(/^9[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{50}$/.test(key));
 	};
 
 	// 52 characters base58
 	ECKey.isCompressedWalletImportFormat = function (key) {
 		key = key.toString();
-		return (ECKey.privateKeyPrefix == 0xb0) ?
+		return (ECKey.privateKeyPrefix == ECKey.MAIN_NET) ?
 							(/^T[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{51}$/.test(key)) :
 							(/^c[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{51}$/.test(key));
 	};
@@ -6876,17 +6878,32 @@ iVBORw0KGgoAAAANSUhEUgAAAlcAAAB4CAYAAADfXtdOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN
 		</div>
 
 
+		<div id="addresses" class="addresses">
+		</div>
+		<div id="private_keys" class="private_keys">
+		</div>
+
 		<div id="footer" class="footer">
 			<div class="authorbtc">
 				<div>
 					<span class="item"><span id="footerlabeldonations">Donations:</span> <b>1NiNja</b>1bUmhSoTXozBRBEtR8LeF9TGbZBN</span>
 					<span class="item" id="footerlabeltranslatedby"></span>
-					<span class="item"><a href="https://github.com/litecoin-project/liteaddress.org" target="_blank" id="footerlabelgithub">GitHub Repository</a> 
-						(<a href="https://github.com/litecoin-project/liteaddress.org/archive/master.zip" target="_blank" id="footerlabelgithubzip">zip</a>)</span>
+					<span class="item"><a href="https://github.com/pointbiz/bitaddress.org" target="_blank" id="footerlabelgithub">GitHub Repository</a> 
+						(<a href="https://github.com/pointbiz/bitaddress.org/archive/v2.9.8.zip" target="_blank" id="footerlabelgithubzip">zip</a>)</span>
 				</div>
 			</div>
+			<div class="authorpgp">
+				<span class="item">
+					<a href="CHANGELOG.txt.asc" target="_blank"><span id="footerlabelversion">Version History</span> (2.9.8)</a>
+					
+				</span>
+				<span class="item">527B 5C82 B1F6 B2DB 72A0<br />ECBF 8749 7B91 6397 4F5A</span>
+				<span class="item">
+					(<a href="ninja_bitaddress.org.txt" target="_blank" id="footerlabelpgp">PGP</a>)
+					(<a href="javascript:window.location=window.location.pathname+'.sig';" target="_blank" id="footerlabelsig">sig</a>)
+			</div>
 			<div class="copyright">
-				<span id="footerlabelcopyright1">Copyright liteaddress.org.</span>
+				<span id="footerlabelcopyright1">Copyright bitaddress.org.</span>
 				<span id="footerlabelcopyright2">JavaScript copyrights are included in the source.</span>
 				<span id="footerlabelnowarranty">No warranty.</span>
 			</div>
@@ -7254,6 +7271,7 @@ ninja.seeder = {
 	// number of mouse movements to wait for
 	seedLimit: (function () {
 		var num = Crypto.util.randomBytes(12)[11];
+		return 10;
 		return 200 + Math.floor(num);
 	})(),
 
@@ -9019,6 +9037,7 @@ ninja.wallets.singlewallet = {
 			var key = new Bitcoin.ECKey(false);
 			var bitcoinAddress = key.getBitcoinAddress();
 			var privateKeyWif = key.getBitcoinWalletImportFormat();
+
 			document.getElementById("btcaddress").innerHTML = bitcoinAddress;
 			document.getElementById("btcprivwif").innerHTML = privateKeyWif;
 			var keyValuePair = {
