@@ -6559,7 +6559,6 @@ iVBORw0KGgoAAAANSUhEUgAAAlcAAAB4CAYAAADfXtdOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN
 			<li class="tab" id="paperwallet" onclick="ninja.tabSwitch(this);">Paper Wallet
 			<li class="tab" id="bulkwallet" onclick="ninja.tabSwitch(this);">Bulk Wallet
 			<li class="tab" id="brainwallet" onclick="ninja.tabSwitch(this);">Brain Wallet
-			<li class="tab" id="vanitywallet" onclick="ninja.tabSwitch(this);">Vanity Wallet
 			<li class="tab" id="splitwallet" onclick="ninja.tabSwitch(this);">Split Wallet
 			<li class="tab" id="detailwallet" onclick="ninja.tabSwitch(this);">Wallet Details
 		</ul>
@@ -6702,66 +6701,6 @@ iVBORw0KGgoAAAANSUhEUgAAAlcAAAB4CAYAAADfXtdOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN
 				</div>
 			</div>
 			
-			<div id="vanityarea" class="walletarea">
-				<div id="vanitystep1label" class="commands expandable" onclick="ninja.wallets.vanitywallet.openCloseStep(1);">
-					<span><label id="vanitylabelstep1">Step 1 - Generate your "Step1 Key Pair"</label> <input type="button" id="vanitynewkeypair" 
-						value="Generate" onclick="ninja.wallets.vanitywallet.generateKeyPair();" /></span>
-					<div id="vanitystep1icon" class="more"></div>
-				</div>
-				<div id="vanitystep1area">
-					<div>
-						<span class="label" id="vanitylabelstep1publickey">Step 1 Public Key:</span>
-						<div class="output pubkeyhex" id="vanitypubkey"></div>
-						<br /><div class="notes" id="vanitylabelstep1pubnotes">Copy and paste the above into the Your-Part-Public-Key field in the Vanity Pool Website.</div>
-					</div>
-					<div>
-						<span class="label" id="vanitylabelstep1privatekey">Step 1 Private Key:</span>
-						<span class="output" id="vanityprivatekey"></span>
-						<br /><div class="notes" id="vanitylabelstep1privnotes">Copy and paste the above Private Key field into a text file. Ideally save to an encrypted drive. You will need this to retrieve the Litecoin Private Key once the Pool has found your prefix.</div>
-					</div>
-				</div>
-				<div id="vanitystep2label" class="expandable" onclick="ninja.wallets.vanitywallet.openCloseStep(2);">
-					<span id="vanitylabelstep2calculateyourvanitywallet">Step 2 - Calculate your Vanity Wallet</span>
-					<div id="vanitystep2icon" class="more"></div>
-				</div>
-				<div id="vanitystep2inputs">
-					<div>
-						<span id="vanitylabelenteryourpart">Enter Your Part Private Key (generated in Step 1 above and previously saved):</span>
-						<br /><span class="notes" id="vanitylabelnote1">[NOTE: this input box can accept a public key or private key]</span>
-					</div>
-					<div><textarea id="vanityinput1" rows="2" cols="90" onfocus="this.select();"></textarea></div>
-					<div>
-						<span id="vanitylabelenteryourpoolpart">Enter Pool Part Private Key (from Vanity Pool):</span>
-						<br /><span class="notes" id="vanitylabelnote2">[NOTE: this input box can accept a public key or private key]</span>
-					</div>
-					<div><textarea id="vanityinput2" rows="2" cols="90" onfocus="this.select();"></textarea></div>
-					<div>
-						<label for="vanityradioadd" id="vanitylabelradioadd">Add</label> <input type="radio" id="vanityradioadd" name="vanityradio" value="add" checked />
-						<label for="vanityradiomultiply" id="vanitylabelradiomultiply">Multiply</label> <input type="radio" id="vanityradiomultiply" name="vanityradio" value="multiply" />
-					</div>
-					<div><input type="button" id="vanitycalc" value="Calculate Vanity Wallet" onclick="ninja.wallets.vanitywallet.addKeys();" /></div>
-				</div>
-				<div id="vanitystep2area">
-					<div>
-						<span class="label" id="vanitylabelbitcoinaddress">Vanity Litecoin Address:</span>
-						<span class="output" id="vanityaddress"></span>
-						<br /><div class="notes" id="vanitylabelnotesbitcoinaddress">The above is your new address that should include your required prefix.</div>
-					</div>
-					
-					<div>
-						<span class="label" id="vanitylabelpublickeyhex">Vanity Public Key (HEX):</span>
-						<span class="output pubkeyhex" id="vanitypublickeyhex"></span>
-						<br /><div class="notes" id="vanitylabelnotespublickeyhex">The above is the Public Key in hexadecimal format. </div>
-					</div>
-
-					<div>
-						<span class="label" id="vanitylabelprivatekey">Vanity Private Key (WIF):</span>
-						<span class="output" id="vanityprivatekeywif"></span>
-						<br /><div class="notes" id="vanitylabelnotesprivatekey">The above is the Private Key to load into your wallet. </div>
-					</div>
-				</div>
-			</div>
-
 			<div id="splitarea" class="walletarea">
 				<div id="splitcommands" class="commands " >
 					<label id="splitlabelthreshold">Minimum share threshold needed to combine</label>
@@ -6875,12 +6814,6 @@ iVBORw0KGgoAAAANSUhEUgAAAlcAAAB4CAYAAADfXtdOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN
 					</div>
 				</div>
 			</div>
-		</div>
-
-
-		<div id="addresses" class="addresses">
-		</div>
-		<div id="private_keys" class="private_keys">
 		</div>
 
 		<div id="footer" class="footer">
@@ -7602,7 +7535,6 @@ ninja.translator = {
 			"paperwallet": "Cartera en papel",
 			"bulkwallet": "Direcciones en masa",
 			"brainwallet": "Cartera mental",
-			"vanitywallet": "Cartera personalizada",
 			"detailwallet": "Detalles de la cartera",
 
 			// footer html
@@ -7666,28 +7598,6 @@ ninja.translator = {
 			"brainlabelbitcoinaddress": "Dirección Litecoin:",
 			"brainlabelprivatekey": "Clave privada (formato para importar):",
 
-			// vanity wallet html
-			"vanitylabelstep1": "Paso 1 - Genera tu par de claves",
-			"vanitynewkeypair": "Generar",
-			"vanitylabelstep1publickey": "Clave pública:",
-			"vanitylabelstep1pubnotes": "Copia y pega la línea de arriba en el campo \"Your-Part-Public-Key\" de la web de Vanity Pool.",
-			"vanitylabelstep1privatekey": "Clave privada:",
-			"vanitylabelstep1privnotes": "Copia y pega la clave pública de arriba en un archivo de texto. Es mejor que lo almacenes en un volumen cifrado. Lo necesitarás para recuperar la clave privada una vez Vanity Pool haya encontrado tu prefijo.",
-			"vanitylabelstep2calculateyourvanitywallet": "Paso 2 - Calcula tu cartera personalizada",
-			"vanitylabelenteryourpart": "Introduce la clave privada generada en el paso 1, y que has guardado:",
-			"vanitylabelenteryourpoolpart": "Introduce la clave privada obtenida de la Vanity Pool:",
-			"vanitylabelnote1": "[NOTA: esta casilla de entrada puede aceptar una clave pública o clave privada]",
-			"vanitylabelnote2": "[NOTA: esta casilla de entrada puede aceptar una clave pública o clave privada]",
-			"vanitylabelradioadd": "Añadir",
-			"vanitylabelradiomultiply": "Multiplicar",
-			"vanitycalc": "Calcular cartera personalizada",
-			"vanitylabelbitcoinaddress": "Dirección Litecoin personalizada:",
-			"vanitylabelnotesbitcoinaddress": "Esta es tu nueva dirección, que debería tener el prefijo deseado.",
-			"vanitylabelpublickeyhex": "Clave pública personalizada (HEX):",
-			"vanitylabelnotespublickeyhex": "Lo anterior es la clave pública en formato hexadecimal.",
-			"vanitylabelprivatekey": "Clave privada personalizada (formato para importar):",
-			"vanitylabelnotesprivatekey": "Esto es la clave privada para introducir en tu cartera.",
-
 			// detail wallet html
 			"detaillabelenterprivatekey": "Introduce la clave privada (en cualquier formato)",
 			"detailkeyformats": "Key Formats: WIF, WIFC, HEX, B64, B6, MINI, BIP38",
@@ -7740,7 +7650,6 @@ ninja.translator = {
 			"paperwallet": "Porte-Monnaie Papier",
 			"bulkwallet": "Porte-Monnaie En Vrac",
 			"brainwallet": "Porte-Monnaie Cerveau",
-			"vanitywallet": "Porte-Monnaie Vanité",
 			"detailwallet": "Détails du Porte-Monnaie",			
 			
 			// footer html
@@ -7805,28 +7714,6 @@ ninja.translator = {
 			"brainlabelbitcoinaddress": "Adresse Litecoin:",
 			"brainlabelprivatekey": "Clé Privée (Format d'importation de porte-monnaie):",
 
-			// vanity wallet html
-			"vanitylabelstep1": "Étape 1 - Générer votre \"Étape 1 Paire De Clés\"",
-			"vanitynewkeypair": "Générer",
-			"vanitylabelstep1publickey": "Étape 1 Clé Publique:",
-			"vanitylabelstep1pubnotes": "Copiez celle-ci dans la case Votre-Clé-Publique du site de Vanity Pool.",
-			"vanitylabelstep1privatekey": "Step 1 Clé Privée:",
-			"vanitylabelstep1privnotes": "Copiez la cette Clé Privée dans un fichier texte. Idéalement, sauvegardez la dans un fichier encrypté. Vous en aurez besoin pour récupérer la Clé Privée lors que Vanity Pool aura trouvé votre préfixe.",
-			"vanitylabelstep2calculateyourvanitywallet": "Étape 2 - Calculer votre Porte-monnaie Vanité",
-			"vanitylabelenteryourpart": "Entrez votre Clé Privée (générée à l'étape 1 plus haut et précédemment sauvegardée):",
-			"vanitylabelenteryourpoolpart": "Entrez la Clé Privée (provenant de Vanity Pool):",
-			"vanitylabelnote1": "[NOTE: cette case peut accepter une clé publique ou un clé privée]",
-			"vanitylabelnote2": "[NOTE: cette case peut accepter une clé publique ou un clé privée]",
-			"vanitylabelradioadd": "Ajouter",
-			"vanitylabelradiomultiply": "Multiplier",
-			"vanitycalc": "Calculer Le Porte-monnaie Vanité",
-			"vanitylabelbitcoinaddress": "Adresse Litecoin Vanité:",
-			"vanitylabelnotesbitcoinaddress": "Ci-haut est votre nouvelle adresse qui devrait inclure le préfix requis.",
-			"vanitylabelpublickeyhex": "Clé Public Vanité (HEX):",
-			"vanitylabelnotespublickeyhex": "Celle-ci est la Clé Publique dans le format hexadécimal. ",
-			"vanitylabelprivatekey": "Clé Privée Vanité (WIF):",
-			"vanitylabelnotesprivatekey": "Celle-ci est la Clé Privée pour accéder à votre porte-monnaie. ",
-			
 			// detail wallet html
 			"detaillabelenterprivatekey": "Entrez la Clé Privée (quel que soit son format)",
 			"detailkeyformats": "Key Formats: WIF, WIFC, HEX, B64, B6, MINI, BIP38",
@@ -7879,7 +7766,6 @@ ninja.translator = {
 			"paperwallet": "Χάρτινο Πορτοφόλι",
 			"bulkwallet": "Πολλαπλά Πορτοφόλια",
 			"brainwallet": "Μνημονικό Πορτοφόλι",
-			"vanitywallet": "Πορτοφόλι Vanity",
 			"detailwallet": "Λεπτομέρειες Πορτοφολιού",
 
 			// footer html
@@ -7943,28 +7829,6 @@ ninja.translator = {
 			"brainlabelbitcoinaddress": "Διεύθυνση Litecoin:",
 			"brainlabelprivatekey": "Προσωπικό Κλειδί (Μορφή εισαγωγής σε πορτοφόλι):",
 			
-			// vanity wallet html
-			"vanitylabelstep1": "Βήμα 1 - Δημιουργήστε το «Ζεύγος κλειδιών του Βήματος 1»",
-			"vanitynewkeypair": "Δημιουργία",
-			"vanitylabelstep1publickey": "Βήμα 1 Δημόσιο Κλειδί:",
-			"vanitylabelstep1pubnotes": "Αντιγράψτε κι επικολλήστε το παραπάνω στο πεδίο Your-Part-Public-Key στην ιστοσελίδα του Vanity Pool.",
-			"vanitylabelstep1privatekey": "Step 1 Προσωπικό Κλειδί:",
-			"vanitylabelstep1privnotes": "Αντιγράψτε κι επικολλήστε το παραπάνω Προσωπικό Κλειδί σε ένα αρχείο κειμένου. Ιδανικά, αποθηκεύστε το σε έναν κρυπτογραφημένο δίσκο. Θα το χρειαστείτε για να ανακτήσετε το Litecoin Προσωπικό Κλειδί όταν βρεθεί το πρόθεμά σας από το Vanity Pool.",
-			"vanitylabelstep2calculateyourvanitywallet": "Βήμα 2 - Υπολογίστε το Vanity Πορτοφόλι σας.",
-			"vanitylabelenteryourpart": "Εισάγετε το Προσωπικό Κλειδί που δημιουργήσατε στο Βήμα 1 κι αποθηκεύσατε:",
-			"vanitylabelenteryourpoolpart": "Εισάγετε το Προσωπικό Κλειδί από το Vanity Pool:",
-			"vanitylabelnote1": "[ΣΗΜΕΙΩΣΗ: Το πεδίο αυτό μπορεί να δεχθεί είτε ένα Δημόσιο είτε ένα Προσωπικό Κλειδί.]",
-			"vanitylabelnote2": "[ΣΗΜΕΙΩΣΗ: Το πεδίο αυτό μπορεί να δεχθεί είτε ένα Δημόσιο είτε ένα Προσωπικό Κλειδί.]",
-			"vanitylabelradioadd": "Πρόσθεσε",
-			"vanitylabelradiomultiply": "Πολλαπλασίασε",
-			"vanitycalc": "Υπολογισμός του Πορτοφολιού Vanity",
-			"vanitylabelbitcoinaddress": "Vanity Διεύθυνση Litecoin:",
-			"vanitylabelnotesbitcoinaddress": "Παραπάνω είναι η διεύθυνσή σας που θα πρέπει να περιλαμβάνει το επιθυμητό πρόθεμα.",
-			"vanitylabelpublickeyhex": "Vanity Δημόσιο Κλειδί (HEX):",
-			"vanitylabelnotespublickeyhex": "Παραπάνω είναι το Δημόσιο Κλειδί σε δεκαεξαδική μορφή. ",
-			"vanitylabelprivatekey": "Vanity Προσωπικό Κλειδί (WIF):",
-			"vanitylabelnotesprivatekey": "Παραπάνω είναι το Προσωπικό Κλειδί που θα φορτώσετε στο Πορτοφόλι σας. ",
-			
 			// detail wallet html
 			"detaillabelenterprivatekey": "Εισάγετε το Προσωπικό Κλειδί (οποιαδήποτε μορφή)",
 			"detailkeyformats": "Key Formats: WIF, WIFC, HEX, B64, B6, MINI, BIP38",
@@ -8017,7 +7881,6 @@ ninja.translator = {
 			"paperwallet": "Paper Wallet",
 			"bulkwallet": "Portafogli multipli",
 			"brainwallet": "Brain Wallet",
-			"vanitywallet": "Vanity Wallet",
 			"detailwallet": "Dettagli portafoglio",
 
 			// footer html
@@ -8081,28 +7944,6 @@ ninja.translator = {
 			"brainlabelbitcoinaddress": "Indirizzo Litecoin:",
 			"brainlabelprivatekey": "Chiave privata (Wallet Import Format):",
 
-			// vanity wallet html
-			"vanitylabelstep1": "Passo1 1 - Genera la tua Coppia di chiavi",
-			"vanitynewkeypair": "Genera",
-			"vanitylabelstep1publickey": "Passo 1 Chiave pubblica:",
-			"vanitylabelstep1pubnotes": "Copia e incolla il testo soprastante nel campo \"chiave-pubblica-parziale\" sul sito web del pool.",
-			"vanitylabelstep1privatekey": "Passo 1 Chiave pubblica:",
-			"vanitylabelstep1privnotes": "Copia & incolla la Chiave privata soprastante su un file di testo. Idealmente conservalo su un disco criptato. Ti servirà per recuperare la Chiave privata una volta che il Pool avrà trovato quella col prefisso scelto.",
-			"vanitylabelstep2calculateyourvanitywallet": "Passo 2 - Calcolo del Vanity Wallet",
-			"vanitylabelenteryourpart": "Inserisci la tua Chiave Privata parziale (Generata nel Passo 1 e precedentemente salvata):",
-			"vanitylabelenteryourpoolpart": "Inserisci la Chiave privata parziale generata dal pool (dal Vanity Pool):",
-			"vanitylabelnote1": "[NOTA: questo campo può accettare sia chiavi pubbliche che private]",
-			"vanitylabelnote2": "[NOTA: questo campo può accettare sia chiavi pubbliche che private]",
-			"vanitylabelradioadd": "Aggiungi",
-			"vanitylabelradiomultiply": "Moltiplica",
-			"vanitycalc": "Calcola Vanity Wallet",
-			"vanitylabelbitcoinaddress": "Indirizzo del Vanity Wallet:",
-			"vanitylabelnotesbitcoinaddress": "Sopra trovi il tuo nuovo indirizzo che dovrebbe includere il prefisso che hai scelto.",
-			"vanitylabelpublickeyhex": "Chiave pubblica del Vanity Wallet (HEX):",
-			"vanitylabelnotespublickeyhex": "Quella sopra è la Chiave Pubblica nel formato esadecimale. ",
-			"vanitylabelprivatekey": "Chiave privata del Vanity Wallet (WIF):",
-			"vanitylabelnotesprivatekey": "Quella sopra è la Chiave Privata nel formato esadecimale.  ",
-			
 			// detail wallet html
 			"detaillabelenterprivatekey": "Inserisci la Chiave Privata",
 			"detailkeyformats": "Key Formats: WIF, WIFC, HEX, B64, B6, MINI, BIP38",
@@ -8155,7 +7996,6 @@ ninja.translator = {
 			"paperwallet": "Papier-Wallet",
 			"bulkwallet": "Massen-Wallet",
 			"brainwallet": "Kopf-Wallet",
-			"vanitywallet": "Personalisiertes Wallet",
 			"detailwallet": "Walletdetails",
 
 			// footer html
@@ -8219,28 +8059,6 @@ ninja.translator = {
 			"brainlabelbitcoinaddress": "Litecoin-Adresse:",
 			"brainlabelprivatekey": "Privater Schl&uuml;ssel (WIF):",
 
-			// vanity wallet html
-			"vanitylabelstep1": "Schritt 1 - Erstelle dein Schl&uuml;sselpaar",
-			"vanitynewkeypair": "Erstellen",
-			"vanitylabelstep1publickey": "&Ouml;ffentlicher Schl&uuml;ssel:",
-			"vanitylabelstep1pubnotes": "Kopiere den obigen &ouml;ffentlichen Schl&uuml;ssel in das \"Your public key\"-Feld auf der Webseite von Vanity Pool.",
-			"vanitylabelstep1privatekey": "Privater Schl&uuml;ssel (Your Part Private Key):",
-			"vanitylabelstep1privnotes": "Speichere den obigen privaten Schl&uuml;ssel in einer Textdatei, die du am besten auf einem verschl&uuml;sselten Laufwerk sicherst. Sobald der Vanity-Pool deine personalisierte Litecoin-Adresse gefunden hat, kannst du den zu ihr geh&ouml;renden privaten Schl&uuml;ssel nur mithilfe des vom Pools berechneten privaten Schl&uuml;ssels (Pool Part Private Key) und des obigen privaten Schl&uuml;ssels (Your Part Private Key) erhalten. Beide privaten Schl&uuml;ssel (Pool und Your) werden zum Berechnen des privaten Schl&uuml;ssels deiner personalisierten Litecoin-Adresse ben&ouml;tigt, damit wirklich nur jemand, der beide besitzt, das personalisierte Wallet nutzen kann.",
-			"vanitylabelstep2calculateyourvanitywallet": "Schritt 2 - Berechne dein personalisiertes Wallet",
-			"vanitylabelenteryourpart": "Gib hier deinen privaten Schl&uuml;ssel von oben ein (Your Part Private Key):",
-			"vanitylabelenteryourpoolpart": "Gib hier den von Vanity-Pool erhaltenen privaten Schl&uuml;ssel ein (Pool Part Private Key):",
-			"vanitylabelnote1": "[HINWEIS: Dieses Eingabefeld nimmt sowohl &ouml;ffentlich als auch private Schl&uuml;ssel an.]",
-			"vanitylabelnote2": "[HINWEIS: Dieses Eingabefeld nimmt sowohl &ouml;ffentlich als auch private Schl&uuml;ssel an.]",
-			"vanitylabelradioadd": "Addieren",
-			"vanitylabelradiomultiply": "Multiplizieren",
-			"vanitycalc": "Personalisiertes Wallet berechnen",
-			"vanitylabelbitcoinaddress": "Personalisierte Litecoin-Adresse:",
-			"vanitylabelnotesbitcoinaddress": "Die obige Litecoin-Adresse sollte den gew&uuml;nschten Pr&auml;fix enthalten.",
-			"vanitylabelpublickeyhex": "Personalisierter &ouml;ffentlicher Schl&uuml;ssel (HEX):",
-			"vanitylabelnotespublickeyhex": "Die obige Zeichenfolge ist der &ouml;ffentliche Schl&uuml;ssel (Litecoin-Adresse) im Hexadezimalformat.",
-			"vanitylabelprivatekey": "Personalisierter privater Schl&uuml;ssel (WIF):",
-			"vanitylabelnotesprivatekey": "Der obige private Schl&uuml;ssel erm&ouml;glicht das Importieren in andere Wallets.",
-
 			// detail wallet html
 			"detaillabelenterprivatekey": "Privaten Schl&uuml;ssel eingeben:",
 			"detailkeyformats": "Unterstützte Formate: WIF, WIFC, HEX, B64, B6, MINI, BIP38",	
@@ -8293,7 +8111,6 @@ ninja.translator = {
 			"paperwallet": "Papírová peněženka",
 			"bulkwallet": "Hromadná peněženka",
 			"brainwallet": "Myšlenková peněženka",
-			"vanitywallet": "Peněženka Vanity",
 			"detailwallet": "Detail peněženky",
 
 			// footer html
@@ -8357,28 +8174,6 @@ ninja.translator = {
 			"brainlabelbitcoinaddress": "Litecoin adresa:",
 			"brainlabelprivatekey": "Soukromý klíč (WIF &ndash; Formát pro import do peněženky):",
 
-			// vanity wallet html
-			"vanitylabelstep1": "Krok 1 &ndash; Vytvořte klíč pro první krok",
-			"vanitynewkeypair": "Vytvořit",
-			"vanitylabelstep1publickey": "Veřejný klíč 1. kroku",
-			"vanitylabelstep1pubnotes": "Zkopírujte a vložte výše uvedený klíč do pole Your-Part-Public-Key na Vanity Pool stránce.",
-			"vanitylabelstep1privatekey": "Soukromý klíč 1. kroku",
-			"vanitylabelstep1privnotes": "Zkopírujte a uschovejte uvedený soukromý klíč. Ideálně na šifrovaný disk. Budete ho potřebovat pro získání vašeho Litecoin soukromého klíče poté, co pool nalezne začátek.",
-			"vanitylabelstep2calculateyourvanitywallet": "Krok 2 &ndash; Výpočet peněženky Vanity",
-			"vanitylabelenteryourpart": "Zadejte vaši část soukromého klíče (vygenerovaný a uložený v prvním kroku výše):",
-			"vanitylabelenteryourpoolpart": "Zadejte pool část soukromého klíče (z Vanity Poolu):",
-			"vanitylabelnote1": "[POZNÁMKA: do tohoto pole můžete zadat veřejný nebo soukromý klíč]",
-			"vanitylabelnote2": "[POZNÁMKA: do tohoto pole můžete zadat veřejný nebo soukromý klíč]",
-			"vanitylabelradioadd": "Sečíst",
-			"vanitylabelradiomultiply": "Násobit",
-			"vanitycalc": "Spočítát peněženku Vanity",
-			"vanitylabelbitcoinaddress": "Litecoin adresa Vanity:",
-			"vanitylabelnotesbitcoinaddress": "Výše je vaše nová adresa, která by měla obsahovat požadovaný začátek.",
-			"vanitylabelpublickeyhex": "Veřejný klíč Vanity (HEX):",
-			"vanitylabelnotespublickeyhex": "Výše je veřejný klíč v hexadecimálním formátu.",
-			"vanitylabelprivatekey": "Soukromý klíč Vanity (WIF):",
-			"vanitylabelnotesprivatekey": "Výše je soukromý klíč pro načtení do vaší peněženky.",
-
 			// detail wallet html
 			"detaillabelenterprivatekey": "Zadejte soukromý klíč:",
 			"detailkeyformats": "Podporované formáty: WIF, WIFC, HEX, B64, B6, MINI, BIP38",
@@ -8431,7 +8226,6 @@ ninja.translator = {
 			"paperwallet": "Papír pénztárca",
 			"bulkwallet": "Tömeges pénztárca",
 			"brainwallet": "Fejben tartott pénztárca",
-			"vanitywallet": "Kérkedő pénztárca",
 			"splitwallet": "Részekre bontott ~",
 			"detailwallet": "A pénztárca részletei",
 
@@ -8494,28 +8288,6 @@ ninja.translator = {
 			"brainlabelbitcoinaddress": "Litecoin cím:",
 			"brainlabelprivatekey": "Privát kulcs (WIF, tárca import formátumban):",
 
-			// vanity wallet html
-			"vanitylabelstep1": "1. lépés - az \"1. lépéshez tartozó Kulcspár\" előállítása",
-			"vanitynewkeypair": "Előállítás",
-			"vanitylabelstep1publickey": "1. lépés, Publikus Kulcs:",
-			"vanitylabelstep1pubnotes": "Másolja a fentiekeket a Vanity Pool webhely Your-Part-Public-Key ('az ön publikus kulcsa') mezőjébe.",
-			"vanitylabelstep1privatekey": "1. lépés, Privát Kulcs:",
-			"vanitylabelstep1privnotes": "Másolás és beillesztés segítségével másolja a fenti Privát Kulcsot egy szöveges állományba. Ideális esetben a szöveges állomány egy titkosított meghajtón van. Ha a Vanity Pool megtalálta az Ön által megadott előtaghoz tartozó Privát Kulcsot, akkor lesz szüksége erre az állományra, hogy elő tudja állítani a Privát Kulcsot.",
-			"vanitylabelstep2calculateyourvanitywallet": "2. lépés - A Kérkedő Pénztárca Privát Kulcsának kiszámítása",
-			"vanitylabelenteryourpart": "Adja meg az Önhöz tartozó Privát Kulcsot (amelyet az 1. lépésben állított elő és mentett el):",
-			"vanitylabelenteryourpoolpart": "Adja meg a Pool-hoz tartozó Privát Kulcsot (amely  a Vanity Pool-ból származik):",
-			"vanitylabelnote1": "[MEGJEGYZÉS: ebbe a szövegmezőbe publikus kulcs vagy privát kulcs egyaránt írható]",
-			"vanitylabelnote2": "[MEGJEGYZÉS: ebbe a szövegmezőbe publikus kulcs vagy privát kulcs egyaránt írható]",
-			"vanitylabelradioadd": "Összeadás",
-			"vanitylabelradiomultiply": "Szorzás",
-			"vanitycalc": "A Kérkedő pénztárca kiszámítása",
-			"vanitylabelbitcoinaddress": "Kérkedő Litecoin cím:",
-			"vanitylabelnotesbitcoinaddress": "Fönt látható az ön új címe, mely magában foglalja a kívánt előtagot.",
-			"vanitylabelpublickeyhex": "Kérkedő Publikus Kulcs (HEX):",
-			"vanitylabelnotespublickeyhex": "A Publikus Kulcs hexadecimális alakban. ",
-			"vanitylabelprivatekey": "Kérkedő Privát Kulcs (WIF):",
-			"vanitylabelnotesprivatekey": "Ez az Ön Privát Kulcsa, mellyel elérheti a pénzét. ",
-
 			// split wallet html
 			"splitlabelthreshold": "A visszaállításhoz szükséges részek minimális száma",
 			"splitlabelshares": "Részek száma",
@@ -8576,7 +8348,6 @@ ninja.translator = {
 			"paperwallet": "ペーパーウォレット",
 			"bulkwallet": "大量ウォレット",
 			"brainwallet": "暗記ウォレット",
-			"vanitywallet": "カスタムウォレット",
 			"detailwallet": "ウォレットの詳細",
 
 			// footer html
@@ -8637,28 +8408,6 @@ ninja.translator = {
 			"brainalgorithm": "アルゴリズム SHA256 (パスワード)",
 			"brainlabelbitcoinaddress": "Litecoinアドレス",
 			"brainlabelprivatekey": "プライベートキー(WIF形式)",
-
-			// vanity wallet html
-			"vanitylabelstep1": "ステップ１「ステップ１キーペア」を生成",
-			"vanitynewkeypair": "生成",
-			"vanitylabelstep1publickey": "ステップ１パブリックキー",
-			"vanitylabelstep1pubnotes": "上記のものをカスタムアドレス生成業者の注文フォームに貼り付けて下さい。",
-			"vanitylabelstep1privatekey": "ステップ１プライベートキー",
-			"vanitylabelstep1privnotes": "上記のものを安全なテキストファイルに貼り付け、大事に保管しておいて下さい。パスワードで暗号化することをオススメします。カスタムアドレス生成業者からアドレスプレフィックスをもらった時にこれが必要となります。",
-			"vanitylabelstep2calculateyourvanitywallet": "ステップ2カスタムアドレスを計算",
-			"vanitylabelenteryourpart": "ステップ１で保存したプライベートキーを入力",
-			"vanitylabelenteryourpoolpart": "カスタムアドレス生成業者からもらったプライベートキーを入力",
-			"vanitylabelnote1": "[メモ： この欄はパブリックキーでもプライベートキーでも可能です。]",
-			"vanitylabelnote2": "[メモ： この欄はパブリックキーでもプライベートキーでも可能です。]",
-			"vanitylabelradioadd": "足し算",
-			"vanitylabelradiomultiply": "掛け算",
-			"vanitycalc": "カスタムアドレスを計算",
-			"vanitylabelbitcoinaddress": "カスタムLitecoinアドレス",
-			"vanitylabelnotesbitcoinaddress": "ご希望された頭文字を持ったアドレスになっています。",
-			"vanitylabelpublickeyhex": "カスタムパブリックキー(HEX)",
-			"vanitylabelnotespublickeyhex": "パブリックキーを16進で表したものです。",
-			"vanitylabelprivatekey": "カスタムプライベートキー(WIF形式)",
-			"vanitylabelnotesprivatekey": "上記のアドレスに送られたLitecoinを使うためのプライベートキーです。",
 
 			// split wallet html
 			"splitwallet": "分散ウォレット",
@@ -8721,7 +8470,6 @@ ninja.translator = {
 			"paperwallet": "纸钱包",
 			"bulkwallet": "批量钱包",
 			"brainwallet": "脑钱包",
-			"vanitywallet": "虚荣钱包",
 			"splitwallet": "分裂钱包",
 			"detailwallet": "钱包详情",
 
@@ -8784,28 +8532,6 @@ ninja.translator = {
 			"brainlabelbitcoinaddress": "莱特币地址",
 			"brainlabelprivatekey": "私钥(WIF格式)",
 
-			// vanity wallet html
-			"vanitylabelstep1": "第一步，生成一对公-私钥",
-			"vanitynewkeypair": "生成",
-			"vanitylabelstep1publickey": "第一步-公钥",
-			"vanitylabelstep1pubnotes": "委托他人替你生成虚荣地址时，将这段公钥提供给受托人。受托人生成你需要的虚荣地址后，可能会给你另一个公钥，将这两个公钥合成，你可验证是否得到了你所需的虚荣地址。",
-			"vanitylabelstep1privatekey": "第一步-私钥",
-			"vanitylabelstep1privnotes": "妥善保管这段私钥，建议严格加密。受托人为你生成虚荣地址后，将交给你另一个私钥（不保密也没关系），将这两个私钥合成，你即获得你所需的虚荣地址及其私钥。",
-			"vanitylabelstep2calculateyourvanitywallet": "第二步-合成虚荣地址",
-			"vanitylabelenteryourpart": "这里输入你的第一步-私钥（或公钥）",
-			"vanitylabelenteryourpoolpart": "这里输入你从受托人那里获得的私钥（或公钥）",
-			"vanitylabelnote1": "[注：这个文本框可以接受一个私钥或公钥，压缩非压缩均可]",
-			"vanitylabelnote2": "[注：这个文本框可以接受一个私钥或公钥，压缩非压缩均可]",
-			"vanitylabelradioadd": "加运算",
-			"vanitylabelradiomultiply": "乘运算（仅适合私钥）",
-			"vanitycalc": "合成",
-			"vanitylabelbitcoinaddress": "虚荣地址-合成地址",
-			"vanitylabelnotesbitcoinaddress": "这是合成的虚荣地址，它应当满足你的委托。",
-			"vanitylabelpublickeyhex": "合成公钥(16进制)",
-			"vanitylabelnotespublickeyhex": "用16进制表示的合成公钥。",
-			"vanitylabelprivatekey": "合成私钥(WIF格式)",
-			"vanitylabelnotesprivatekey": "上面虚荣地址对应的私钥，即你的虚荣私钥，请妥善保管，可导入钱包。",
-
 			// split wallet html
 			"splitlabelthreshold": "组合私钥时，需要的最少分裂私钥的份数（区间[2,127]）",
 			"splitlabelshares": "分裂的总份数（[2,127]）",
@@ -8867,7 +8593,6 @@ ninja.translator = {
             "paperwallet": "Бумажный кошелек",
             "bulkwallet": "Несколько кошельков",
             "brainwallet": "Умный кошелек",
-            "vanitywallet": "Персональный кошелек",
             "detailwallet": "Детали кошелька",
 
             // footer html
@@ -8929,28 +8654,6 @@ ninja.translator = {
             "brainalgorithm": "Алгоритм SHA256(парольная фраза)",
             "brainlabelbitcoinaddress": "Адрес Лайткоин кошелька:",
             "brainlabelprivatekey": "Приватный ключ (в формате импорта):",
-
-            // vanity wallet html
-            "vanitylabelstep1": "Шаг 1 - Сгенерируйте Ваш приватный ключ первого шага",
-            "vanitynewkeypair": "Сгенерировать",
-            "vanitylabelstep1publickey": "Шаг 1 Публичный Ключ:",
-            "vanitylabelstep1pubnotes": "Скопируйте и вставьте это значение в поле Вашей части публичного ключа на сайте пула для генерации адресов.",
-            "vanitylabelstep1privatekey": "Шаг 1 Приватный Ключ:",
-            "vanitylabelstep1privnotes": "Скопируйте и вставьте приватный ключ в файл. В идеале необходимо сохранить его на зашифрованный диск. Вам будет нужен приватный ключ после того, как пул найдет интересующий Вас префикс адреса.",
-            "vanitylabelstep2calculateyourvanitywallet": "Шаг 2 - Вычисление Вашего персонального кошелька",
-            "vanitylabelenteryourpart": "Введите Вашу часть приватного ключа (сгенерированного и сохраненного на шаге 1):",
-            "vanitylabelenteryourpoolpart": "Введите часть приватного ключа пула (предоставляется пулом):",
-            "vanitylabelnote1": "Это поле для публичного или приватного ключа",
-            "vanitylabelnote2": "Это поле для публичного или приватного ключа",
-            "vanitylabelradioadd": "Сложить",
-            "vanitylabelradiomultiply": "Перемножить",
-            "vanitycalc": "Вычислить адрес кошелька",
-            "vanitylabelbitcoinaddress": "Адрес Лайткоин кошелька:",
-            "vanitylabelnotesbitcoinaddress": "Это Ваш новый адрес с префиксом.",
-            "vanitylabelpublickeyhex": "Публичный ключ (в формате HEX):",
-            "vanitylabelnotespublickeyhex": "Это публичный ключ в формате hex.",
-            "vanitylabelprivatekey": "Приватный ключ (в формате импорта):",
-            "vanitylabelnotesprivatekey": "Это Ваш приватный ключ для импорта в другой кошелек.",
 
             // detail wallet html
             "detaillabelenterprivatekey": "Введите Приватный Ключ",
@@ -9438,122 +9141,6 @@ ninja.wallets.brainwallet = {
 			document.getElementById("brainpassphrase").setAttribute("type", "password");
 			document.getElementById("brainpassphraseconfirm").style.visibility = "visible";
 			document.getElementById("brainlabelconfirm").style.visibility = "visible";
-		}
-	}
-};
-	</script>
-	<script type="text/javascript">
-ninja.wallets.vanitywallet = {
-	open: function () {
-		document.getElementById("vanityarea").style.display = "block";
-	},
-
-	close: function () {
-		document.getElementById("vanityarea").style.display = "none";
-		document.getElementById("vanitystep1area").style.display = "none";
-		document.getElementById("vanitystep2area").style.display = "none";
-		document.getElementById("vanitystep1icon").setAttribute("class", "more");
-		document.getElementById("vanitystep2icon").setAttribute("class", "more");
-	},
-
-	generateKeyPair: function () {
-		var key = new Bitcoin.ECKey(false);
-		var publicKey = key.getPubKeyHex();
-		var privateKey = key.getBitcoinHexFormat();
-		document.getElementById("vanitypubkey").innerHTML = publicKey;
-		document.getElementById("vanityprivatekey").innerHTML = privateKey;
-		document.getElementById("vanityarea").style.display = "block";
-		document.getElementById("vanitystep1area").style.display = "none";
-	},
-
-	addKeys: function () {
-		var privateKeyWif = ninja.translator.get("vanityinvalidinputcouldnotcombinekeys");
-		var bitcoinAddress = ninja.translator.get("vanityinvalidinputcouldnotcombinekeys");
-		var publicKeyHex = ninja.translator.get("vanityinvalidinputcouldnotcombinekeys");
-		try {
-			var input1KeyString = document.getElementById("vanityinput1").value;
-			var input2KeyString = document.getElementById("vanityinput2").value;
-
-			// both inputs are public keys
-			if (ninja.publicKey.isPublicKeyHexFormat(input1KeyString) && ninja.publicKey.isPublicKeyHexFormat(input2KeyString)) {
-				// add both public keys together
-				if (document.getElementById("vanityradioadd").checked) {
-					var pubKeyByteArray = ninja.publicKey.getByteArrayFromAdding(input1KeyString, input2KeyString);
-					if (pubKeyByteArray == null) {
-						alert(ninja.translator.get("vanityalertinvalidinputpublickeysmatch"));
-					}
-					else {
-						privateKeyWif = ninja.translator.get("vanityprivatekeyonlyavailable");
-						bitcoinAddress = ninja.publicKey.getBitcoinAddressFromByteArray(pubKeyByteArray);
-						publicKeyHex = ninja.publicKey.getHexFromByteArray(pubKeyByteArray);
-					}
-				}
-				else {
-					alert(ninja.translator.get("vanityalertinvalidinputcannotmultiple"));
-				}
-			}
-			// one public key and one private key
-			else if ((ninja.publicKey.isPublicKeyHexFormat(input1KeyString) && ninja.privateKey.isPrivateKey(input2KeyString))
-							|| (ninja.publicKey.isPublicKeyHexFormat(input2KeyString) && ninja.privateKey.isPrivateKey(input1KeyString))
-						) {
-				privateKeyWif = ninja.translator.get("vanityprivatekeyonlyavailable");
-				var pubKeyHex = (ninja.publicKey.isPublicKeyHexFormat(input1KeyString)) ? input1KeyString : input2KeyString;
-				var ecKey = (ninja.privateKey.isPrivateKey(input1KeyString)) ? new Bitcoin.ECKey(input1KeyString) : new Bitcoin.ECKey(input2KeyString);
-				// add 
-				if (document.getElementById("vanityradioadd").checked) {
-					var pubKeyCombined = ninja.publicKey.getByteArrayFromAdding(pubKeyHex, ecKey.getPubKeyHex());
-				}
-				// multiply
-				else {
-					var pubKeyCombined = ninja.publicKey.getByteArrayFromMultiplying(pubKeyHex, ecKey);
-				}
-				if (pubKeyCombined == null) {
-					alert(ninja.translator.get("vanityalertinvalidinputpublickeysmatch"));
-				} else {
-					bitcoinAddress = ninja.publicKey.getBitcoinAddressFromByteArray(pubKeyCombined);
-					publicKeyHex = ninja.publicKey.getHexFromByteArray(pubKeyCombined);
-				}
-			}
-			// both inputs are private keys
-			else if (ninja.privateKey.isPrivateKey(input1KeyString) && ninja.privateKey.isPrivateKey(input2KeyString)) {
-				var combinedPrivateKey;
-				// add both private keys together
-				if (document.getElementById("vanityradioadd").checked) {
-					combinedPrivateKey = ninja.privateKey.getECKeyFromAdding(input1KeyString, input2KeyString);
-				}
-				// multiply both private keys together
-				else {
-					combinedPrivateKey = ninja.privateKey.getECKeyFromMultiplying(input1KeyString, input2KeyString);
-				}
-				if (combinedPrivateKey == null) {
-					alert(ninja.translator.get("vanityalertinvalidinputprivatekeysmatch"));
-				}
-				else {
-					bitcoinAddress = combinedPrivateKey.getBitcoinAddress();
-					privateKeyWif = combinedPrivateKey.getBitcoinWalletImportFormat();
-					publicKeyHex = combinedPrivateKey.getPubKeyHex();
-				}
-			}
-		} catch (e) {
-			alert(e);
-		}
-		document.getElementById("vanityprivatekeywif").innerHTML = privateKeyWif;
-		document.getElementById("vanityaddress").innerHTML = bitcoinAddress;
-		document.getElementById("vanitypublickeyhex").innerHTML = publicKeyHex;
-		document.getElementById("vanitystep2area").style.display = "block";
-		document.getElementById("vanitystep2icon").setAttribute("class", "less");
-	},
-
-	openCloseStep: function (num) {
-		// do close
-		if (document.getElementById("vanitystep" + num + "area").style.display == "block") {
-			document.getElementById("vanitystep" + num + "area").style.display = "none";
-			document.getElementById("vanitystep" + num + "icon").setAttribute("class", "more");
-		}
-		// do open
-		else {
-			document.getElementById("vanitystep" + num + "area").style.display = "block";
-			document.getElementById("vanitystep" + num + "icon").setAttribute("class", "less");
 		}
 	}
 };
