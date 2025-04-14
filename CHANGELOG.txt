@@ -198,7 +198,6 @@ bitaddress.org-v1.4-SHA1-5c120c0860032e88a8fd81b802d6f53a5fc082bf.html
 2011-11-28: status ACTIVE
 bitaddress.org-v1.3-SHA1-88d9a17e6d6286d7840043b6df9980e85f44b8c0.html
  - Testnet Edition: if you add ?testnet=true to the end of the URL it will activate testnet edition.
- - isMiniFormat function updated to accept mini key formats of length 22, 26 or 30 characters.
  - bitaddress.org software is now open source available under the MIT License.
 
 2011-10-12: status ACTIVE

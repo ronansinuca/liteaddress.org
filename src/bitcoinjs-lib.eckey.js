@@ -22,8 +22,6 @@ Bitcoin.ECKey = (function () {
 			} else if (ECKey.isCompressedWalletImportFormat(input)) {
 				bytes = ECKey.decodeCompressedWalletImportFormat(input);
 				this.compressed = true;
-			} else if (ECKey.isMiniFormat(input)) {
-				bytes = Crypto.SHA256(input, { asBytes: true });
 			} else if (ECKey.isHexFormat(input)) {
 				bytes = Crypto.util.hexToBytes(input);
 			} else if (ECKey.isBase64Format(input)) {
@@ -134,6 +132,7 @@ Bitcoin.ECKey = (function () {
 	// Sipa Private Key Wallet Import Format 
 	ECKey.prototype.getBitcoinWalletImportFormat = function () {
 		var bytes = this.getBitcoinPrivateKeyByteArray();
+		//console.log("Private: ", this.getBitcoinHexFormat());
 		bytes.unshift(ECKey.privateKeyPrefix); // prepend 0x80 byte
 		if (this.compressed) bytes.push(0x01); // append 0x01 byte for compressed format
 		var checksum = Crypto.SHA256(Crypto.SHA256(bytes, { asBytes: true }), { asBytes: true });
@@ -255,17 +254,6 @@ Bitcoin.ECKey = (function () {
 	ECKey.isBase6Format = function (key) {
 		key = key.toString();
 		return (/^[012345]{99}$/.test(key));
-	};
-
-	// 22, 26 or 30 characters, always starts with an 'S'
-	ECKey.isMiniFormat = function (key) {
-		key = key.toString();
-		var validChars22 = /^S[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{21}$/.test(key);
-		var validChars26 = /^S[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{25}$/.test(key);
-		var validChars30 = /^S[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{29}$/.test(key);
-		var testBytes = Crypto.SHA256(key + "?", { asBytes: true });
-
-		return ((testBytes[0] === 0x00 || testBytes[0] === 0x01) && (validChars22 || validChars26 || validChars30));
 	};
 
 	return ECKey;

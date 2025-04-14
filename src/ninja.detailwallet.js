@@ -57,12 +57,7 @@ ninja.wallets.detailwallet = {
 			});
 		}
 		else {
-			if (Bitcoin.ECKey.isMiniFormat(key)) {
-				// show Private Key Mini Format
-				document.getElementById("detailprivmini").innerHTML = key;
-				document.getElementById("detailmini").style.display = "block";
-			}
-			else if (Bitcoin.ECKey.isBase6Format(key)) {
+			if (Bitcoin.ECKey.isBase6Format(key)) {
 				// show Private Key Base6 Format
 				document.getElementById("detailprivb6").innerHTML = key;
 				document.getElementById("detailb6").style.display = "block";

@@ -6389,7 +6389,9 @@
 
                         this._resetState()
 
-
+                        if (encoding !== undefined)
+                            return digest;
+                        
                         return Array.from(digest)
                     }
 

@@ -216,9 +216,6 @@
 			testBadKeyIsNotBase64: function () {
 				return !(Bitcoin.ECKey.isBase64Format("bad key"));
 			},
-			testBadKeyIsNotMini: function () {
-				return !(Bitcoin.ECKey.isMiniFormat("bad key"));
-			},
 			testBadKeyReturnsNullPrivFromECKey: function () {
 				var key = "bad key";
 				var ecKey = new Bitcoin.ECKey(key);

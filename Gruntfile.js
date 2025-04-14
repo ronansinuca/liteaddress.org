@@ -19,6 +19,7 @@ module.exports = function (grunt) {
 					{ token: "//bitcoinjs-lib.util.js", file: "./src/bitcoinjs-lib.util.js" },
 					{ token: "//cryptojs.js", file: "./src/cryptojs.js" },
 					{ token: "//cryptojs.sha256.js", file: "./src/cryptojs.sha256.js" },
+					{ token: "//cryptojs.keccak.js", file: "./src/cryptojs.keccak.js" },
 					{ token: "//cryptojs.pbkdf2.js", file: "./src/cryptojs.pbkdf2.js" },
 					{ token: "//cryptojs.hmac.js", file: "./src/cryptojs.hmac.js" },
 					{ token: "//cryptojs.aes.js", file: "./src/cryptojs.aes.js" },

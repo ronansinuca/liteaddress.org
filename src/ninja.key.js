@@ -6,8 +6,7 @@ ninja.privateKey = {
 					Bitcoin.ECKey.isWalletImportFormat(key) ||
 					Bitcoin.ECKey.isCompressedWalletImportFormat(key) ||
 					Bitcoin.ECKey.isHexFormat(key) ||
-					Bitcoin.ECKey.isBase64Format(key) ||
-					Bitcoin.ECKey.isMiniFormat(key)
+					Bitcoin.ECKey.isBase64Format(key)
 				);
 	},
 	getECKeyFromAdding: function (privKey1, privKey2) {
